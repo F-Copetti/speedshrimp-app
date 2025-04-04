@@ -9,7 +9,7 @@ st.title("Fish Speed Analyzer 🐟")
 
 st.markdown("""
     Envie um vídeo para calcular a velocidade média dos peixes.  
-    [Ver meu currículo →](/profile)  # Link para a página Profile
+    [Ver meu currículo →](/profile)
 """)
 
 # Upload do vídeo
