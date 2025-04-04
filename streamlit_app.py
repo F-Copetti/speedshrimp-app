@@ -7,10 +7,6 @@ st.set_page_config(page_title="Fish Speed Analyzer", page_icon="🐟")
 # Título e descrição
 st.title("Fish Speed Analyzer 🐟")
 
-st.write(
-    "Let's start building! For help and inspiration, head over to [docs.streamlit.io](https://docs.streamlit.io/)."
-)
-
 st.markdown("""
     Envie um vídeo para calcular a velocidade média dos peixes.  
     [Ver meu currículo →](/profile)  # Link para a página Profile
