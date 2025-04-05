@@ -1,6 +1,7 @@
 streamlit
 torch
-opencv-python
+torchvision
+opencv-python-headless
 Pillow
 matplotlib
 numpy
@@ -9,7 +10,4 @@ tqdm
 scipy
 pandas
 seaborn
-# YOLOv5 diretamente do GitHub rodar a linha abaixo no terminal na pasta principal do projeto:
-git+https://github.com/ultralytics/yolov5.git
-# git clone https://github.com/ultralytics/yolov5.git
 thop

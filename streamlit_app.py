@@ -81,4 +81,4 @@ if uploaded_file is not None:
         st.warning("⚠️ Não foi possível localizar o vídeo processado.")
 
     # Limpeza automática (se quiser deixar permanente, comente isso)
-    # shutil.rmtree(temp_dir)
+    shutil.rmtree(temp_dir)
