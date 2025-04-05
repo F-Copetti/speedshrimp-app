@@ -3,8 +3,14 @@ import torch
 import os
 import tempfile
 import shutil
-from yolov5 import detect
 import time
+import sys
+
+# Adicionar o diretório do YOLOv5 ao path para importar o detect.py corretamente
+if 'yolov5' not in sys.path:
+    sys.path.append('yolov5')
+
+from yolov5 import detect  # Agora importa detect corretamente
 
 # Configuração inicial
 st.set_page_config(page_title="Fish Speed Analyzer", page_icon="🐟")
@@ -23,23 +29,20 @@ if uploaded_file is not None:
     video_path = os.path.join(temp_dir, uploaded_file.name)
     with open(video_path, "wb") as f:
         f.write(uploaded_file.read())
-    
+
     st.success("✅ Vídeo enviado com sucesso!")
 
-    # Detecção com YOLOv5
+    # Barra de progresso
     st.info("🚀 Iniciando a detecção de camarões no vídeo...")
-
     progress_bar = st.progress(0)
-
-    # Simular progresso (enquanto prepara o detecção)
     for percent_complete in range(0, 40, 5):
         time.sleep(0.1)
         progress_bar.progress(percent_complete)
 
-    # Caminho do modelo
-    model_path = 'models/best.pt'
+    # Caminho para o modelo
+    model_path = 'models/best.pt'  # Seu modelo customizado
 
-    # Configurar argumentos simulando o detect.py
+    # Configurar argumentos para o detect.py
     opt = detect.parse_opt()
     opt.weights = model_path
     opt.source = video_path
@@ -50,13 +53,13 @@ if uploaded_file is not None:
     opt.project = temp_dir
     opt.name = 'results'
     opt.exist_ok = True
+    opt.save_crop = False  # (opcional) salva somente detecções cortadas
 
-    # Executar detecção
+    # Executar a detecção
     detect.main(opt)
 
-    # Finalizar barra de progresso
+    # Atualizar barra de progresso
     progress_bar.progress(100)
-
     st.success("🎯 Detecção concluída!")
 
     # Localizar o vídeo processado
@@ -80,5 +83,5 @@ if uploaded_file is not None:
     else:
         st.warning("⚠️ Não foi possível localizar o vídeo processado.")
 
-    # Limpeza automática (se quiser deixar permanente, comente isso)
+    # Limpeza automática da pasta temporária
     shutil.rmtree(temp_dir)
