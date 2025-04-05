@@ -31,7 +31,9 @@ if uploaded_file is not None:
 
     st.write(f"🔎 Caminho detect.py calculado: {detect_script}")
     st.write(f"📂 Conteúdo da pasta atual: {os.listdir(os.getcwd())}")
-    
+    st.write(f"📂 Conteúdo da pasta yolov5: {os.listdir(os.path.join(os.getcwd(), 'yolov5'))}")
+
+
     if not os.path.exists(detect_script):
         st.error("❌ Script detect.py não encontrado! Verifique se o YOLOv5 foi clonado corretamente.")
     else:
