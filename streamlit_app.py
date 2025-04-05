@@ -28,6 +28,9 @@ if uploaded_file is not None:
     # Caminho para o repositório do YOLOv5
     yolov5_path = os.path.join(os.getcwd(), "yolov5")
     detect_script = os.path.join(yolov5_path, "detect.py")
+
+    st.write(f"🔎 Caminho detect.py calculado: {detect_script}")
+    st.write(f"📂 Conteúdo da pasta atual: {os.listdir(os.getcwd())}")
     
     if not os.path.exists(detect_script):
         st.error("❌ Script detect.py não encontrado! Verifique se o YOLOv5 foi clonado corretamente.")
